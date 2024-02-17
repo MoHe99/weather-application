@@ -1,49 +1,35 @@
-# Technical:
+# Weather Application
+This project was part of my examination performance in the "Software Engineering" module of my Bachelor's degree. The task was to create an application that displays weather data from sensors, whereby the sensors were to be simulated. There was to be a sensor for humidity, temperature and air pressure. It should also be possible to make an additional input for the temperature. The data should be displayed in a suitable form. 
+
+It was important that the application was written in the MVC pattern and used other software patterns. For example, I used the "Observer Pattern" and the "Factory Pattern". The application should first be modeled with UML in a class diagram and then implemented. In addition, unit tests were to be created for all important classes.
 
 ## Prerequisites:
+Before you begin, ensure you have
 
-- Make sure you have installed node v18.9.0
-- Make sure you have installed Docker (on Linux) or Docker Desktop on Windows/ Mac
-- Make sure you have installed Make
-- Make sure you have installed pnpm (`npm i -g pnpm`)
+- node v18
+- docker
+- make
+- pnpm
 
-When you have all prerequisites just run `make rebuild` to start the application.
+installed on your system. These tools are necessary for installing dependencies and running the application locally.
 
-### Install Make:
+## Getting started
 
-MacOS:
+Follow these steps to set up and launch the Weather Application on your local system:
 
-- `xcode-select --install`
+1. **Clone repository**
+Clone the repository to your local machine using the following command:
+`git clone `
 
-Linux/ Ubuntu:
+2. **Install dependencies**
+Navigate to the cloned repository directory and install all required dependencies:
 
-- `sudo apt-get install build-essential`
+cd weather-application/client && pnpm i && cd ../server && pnpm i && cd ..
 
-Windows:
+3. **Start the development environment**
+Launch the development server using `make start`. This command builds all containers and starts them (including watching for file changes).
 
-- First: Install Chocolatey with this guide https://chocolatey.org/install#individual
-- Then: `choco install make`
-
-## Node-Modules:
-
-Install existing: `pnpm i` in root, /server and /backend.\
-Install new/ uninstall: Execute `pnpm add MODULENAME` in the shell of the corresponding local directory and make a rebuild.
-
-Uninstall module: Execute `pnpm remove MODULENAME` in the shell of the corresponding directory and rebuild.
-
-NOTE: If you are in development and don't want to rebuild your application, you can run the pnpm (un)installation also a second time inside the shell of the \
-corresponding docker-container to have the module instantly in your running application (use `docker-compose exec SERVICENAME`, to enter the shell of the corresponding service).
-
-## Docker-Compose Commands
-
-| Command                                             | Description                                         |
-| --------------------------------------------------- | --------------------------------------------------- |
-| `docker-compose up --build`                         | Build and start the application in development mode |
-| `ENV_MODE=Dockerfile.dev docker-compose up --build` | Build and start the application in production mode  |
-| `docker-compose up`                                 | Start the application                               |
-| `Press ctrl+c to stop the application`              | Stop the application                                |
-| `docker-compose down --rmi all --remove-orphans -v` | Completely remove the application                   |
-| `docker-compose exec SERVICENAME`                   | Enter the Docker shell of a service                 |
+After the server has started, you can visit `http://localhost:3000` and start testing the app.
 
 ## Make Commands
 
@@ -61,9 +47,5 @@ corresponding docker-container to have the module instantly in your running appl
 | `make lint`              | Run the rome linter to check for linter errors                  |
 | `make format`            | Run the rome formatter                                          |
 
-## Access
-
-| Service  | URL                   | Credentials |
-| -------- | --------------------- | ----------- |
-| Frontend | http://localhost:3000 | N/A         |
-| Backend  | http://localhost:8080 | N/A         |
+> [!IMPORTANT]
+> This project serves showcase project and was part of my Bachelor's degree. It's not aimed at wide distribution or commercial use. Feedback, and suggestions are welcome.
