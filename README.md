@@ -50,4 +50,4 @@ After the server has started, you can visit `http://localhost:3000` and start te
 | `make format`            | Run the rome formatter                                          |
 
 > [!IMPORTANT]
-> This project serves showcase project and was part of my Bachelor's degree. It's not aimed at wide distribution or commercial use. Feedback, and suggestions are welcome.
+> This project serves as a showcase project and was part of my Bachelor's degree. It's not aimed at wide distribution or commercial use. Feedback, and suggestions are welcome.
