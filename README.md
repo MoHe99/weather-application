@@ -3,6 +3,8 @@ This project was part of my examination performance in the "Software Engineering
 
 It was important that the application was written in the MVC pattern and used other software patterns. For example, I used the "Observer Pattern" and the "Factory Pattern". The application should first be modeled with UML in a class diagram and then implemented. In addition, unit tests were to be created for all important classes.
 
+My final grade in the module "Software Engineering" was 1.0.
+
 ## Prerequisites:
 Before you begin, ensure you have
 
