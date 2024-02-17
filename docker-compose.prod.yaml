@@ -1,0 +1,56 @@
+version: "3.9"
+
+services:
+  client:
+    container_name: react_service
+    build:
+      context: .
+      dockerfile: client/Dockerfile.prod
+    ports:
+      - "${REACT_TARGET_PORT}:${REACT_SYSTEM_PORT}"
+    volumes:
+      - ./sensor.config.json:/app/src/config/sensor.config.json
+    stdin_open: true
+    tty: true
+    environment:
+      - WATCHPACK_POLLING=true
+    networks:
+      - network
+
+  server:
+    container_name: node_service
+    build:
+      context: .
+      dockerfile: server/Dockerfile.prod
+    ports:
+      - "${EXPRESS_TARGET_PORT}:${EXPRESS_SYSTEM_PORT}"
+    volumes:
+      - ./sensor.config.json:/app/src/config/sensor.config.json
+    environment:
+      - EXPRESS_SYSTEM_PORT=${EXPRESS_SYSTEM_PORT}
+    networks:
+      - network
+    depends_on:
+      - mongodb
+
+  mongodb:
+    build: ./mongodb
+    container_name: mongodb_service
+    ports:
+      - "${MONGODB_TARGET_PORT}:${MONGODB_SYSTEM_PORT}"
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongodb/scripts/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGODB_NAME}
+    networks:
+      - network
+
+volumes:
+  mongodb_data:
+  config_volume:
+
+networks:
+  network:

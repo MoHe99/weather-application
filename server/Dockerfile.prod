@@ -1,0 +1,26 @@
+FROM node:18.9.0 AS build
+WORKDIR /app
+
+RUN npm i -g pnpm
+
+COPY ./server/package.json .
+RUN pnpm i
+
+COPY ./server .
+COPY ./sensor.config.json /app/src/config/sensor.config.json
+
+RUN pnpm build
+
+FROM node:18.9.0 AS production
+WORKDIR /app
+
+RUN npm i -g pnpm
+
+COPY ./server/package.json .
+RUN pnpm i --production
+
+COPY --from=build /app/dist ./dist
+
+EXPOSE ${EXPRESS_SYSTEM_PORT}
+
+CMD ["pnpm", "run", "prod"]

@@ -1,0 +1,165 @@
+$basic-unit: 1rem;
+
+$primary-color: #E0FFFF;
+$secondary-color: #8BB3B3;
+$tertiary-color: #FFFFFF;
+
+$table-spacing: $basic-unit;
+$border-radius: $basic-unit;
+
+$number-sensors: 3;
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-size: 16px
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: $primary-color;
+  color: $secondary-color;
+
+  h2 {
+    font-size: 38px;
+  }
+
+  header {
+    background-color: $secondary-color;
+    display: block;
+    padding: 2rem 0;
+
+    h1 {
+      font-size: 48px;
+      text-align: center;
+      margin: 0;
+      color: $tertiary-color;
+    }
+  }
+
+  main {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    margin: 3rem 0 1rem 0;
+  }
+
+  table {
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: calc($table-spacing / 4) $table-spacing;
+    border: none;
+    table-layout: fixed;
+    width: 100%;
+    font-size: 1.5rem;
+
+      th, td {
+        padding: $basic-unit;
+        background-color: $secondary-color;
+        color: $tertiary-color;
+        text-align: center;
+        
+        &.left {
+          font-weight: 700;
+          border-radius: $basic-unit 0 0 $basic-unit;
+        }
+        &.right {
+          border-radius: 0 $basic-unit $basic-unit 0;
+        }
+      }
+  }
+
+  .diagrams {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $basic-unit;
+
+    .chart-wrapper {
+      width: calc((100% / $number-sensors) - ((($number-sensors - 1) * $basic-unit) / $number-sensors));
+    }
+  }
+
+  .loading-overlay {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+  }
+
+  .statistics {
+    tr {
+      th, td {
+        :first-child {
+          border-radius: 1rem 0 0 1rem;
+        }
+        :last-child {
+          border-radius: 0 1rem 1rem 0;
+        }
+      }
+    }
+  }
+
+  footer {
+    margin-top: 5rem;
+    height: 200px;
+    width: 100%;
+    background-color: $secondary-color;
+  }
+
+  form {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    label {
+     display: block;
+     width: 100%; 
+    }
+
+    input {
+      max-height: fit-content;
+      border: none;
+      color: $tertiary-color;
+      background-color: $secondary-color;
+      font-weight: 700;
+      padding: $basic-unit;
+      font-size: $basic-unit;
+      border-radius: $basic-unit;
+      border: 3px $secondary-color solid;
+      transition: .3s ease-in-out;
+
+      &:hover {
+        background-color: $primary-color;
+        color: $secondary-color;
+        cursor: pointer;
+      }
+    }
+
+    input[type="number"] {
+      max-width: 10rem;
+      -moz-appearance: textfield;
+
+      &:hover {
+        cursor: text;
+      }
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}

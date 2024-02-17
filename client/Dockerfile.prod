@@ -1,0 +1,23 @@
+FROM node:18.9.0 AS build
+WORKDIR /app
+
+RUN npm i -g pnpm
+
+COPY ./client/package.json .
+RUN pnpm i
+
+COPY ./client .
+COPY ./sensor.config.json /app/src/config/sensor.config.json
+
+RUN pnpm build
+
+FROM node:18.9.0 AS production
+WORKDIR /app
+
+RUN npm i -g serve
+
+COPY --from=build /app/dist ./dist
+
+EXPOSE ${REACT_SYSTEM_PORT}
+
+CMD ["serve", "-s", "dist"]

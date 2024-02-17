@@ -1,0 +1,45 @@
+{
+	"$schema": "./node_modules/rome/configuration_schema.json",
+	"organizeImports": {
+		"enabled": false
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"all": true,
+			"correctness": {
+				"all": true
+			},
+			"security": {
+				"all": true
+			},
+			"style": {
+				"all": true
+			},
+			"complexity": {
+				"all": true
+			},
+			"suspicious": {
+				"all": true
+			},
+			"nursery": {
+				"useExhaustiveDependencies": "off"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single"
+		},
+		"globals": [
+			"jest",
+			"describe",
+			"it",
+			"expect",
+			"test",
+			"beforeEach",
+			"afterEach",
+			"done"
+		]
+	}
+}
